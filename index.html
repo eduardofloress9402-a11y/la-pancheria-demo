@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="Demo de tienda web para La Panchería, El Calafate." />
+  <title>La Panchería · El Calafate</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="La Panchería - inicio">
+      <img src="assets/logo.svg" alt="" />
+      <span><strong>LA PANCHERÍA</strong><small>EL CALAFATE</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#menu" data-i18n="navMenu">Menú</a>
+      <a href="#ubicacion" data-i18n="navLocation">Ubicación</a>
+      <a href="https://www.instagram.com/lapancheria.fte/" target="_blank" rel="noreferrer">Instagram</a>
+    </nav>
+    <div class="header-actions">
+      <button id="langBtn" class="lang-btn" type="button" aria-label="Cambiar idioma">EN</button>
+      <button id="cartBtn" class="cart-btn" type="button" aria-label="Abrir carrito">
+        <span aria-hidden="true">🛒</span>
+        <span data-i18n="cart">Pedido</span>
+        <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-copy">
+        <p class="kicker" data-i18n="kicker">PANCHOS BIEN CARGADOS · EL CALAFATE</p>
+        <h1 data-i18n="heroTitle">Comida rápida,<br><span>sin vueltas.</span></h1>
+        <p class="hero-text" data-i18n="heroText">Elegí, armá tu pedido y mandalo por WhatsApp en menos de un minuto.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu" data-i18n="viewMenu">Ver menú</a>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Gdor.+Gregores+830,+El+Calafate,+Santa+Cruz" target="_blank" rel="noreferrer" data-i18n="howToGet">Cómo llegar</a>
+        </div>
+        <div class="hero-meta">
+          <span>📍 Gdor. Gregores 830</span>
+          <span data-i18n="pickup">🥡 Retiro en local</span>
+          <span data-i18n="whatsappOrders">💬 Pedidos por WhatsApp</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="burst"></div>
+        <svg viewBox="0 0 620 420" role="img">
+          <defs>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+              <feDropShadow dx="0" dy="22" stdDeviation="18" flood-opacity=".22"/>
+            </filter>
+          </defs>
+          <g transform="translate(55 45) rotate(-7 250 165)" filter="url(#shadow)">
+            <path d="M86 228C34 206 24 154 55 117C96 67 186 36 319 39C425 42 495 70 515 113C533 151 514 195 470 219C386 265 178 268 86 228Z" fill="#f3a72f"/>
+            <path d="M68 207C41 178 47 141 77 113C126 67 222 53 334 58C432 62 487 82 505 117C519 144 504 174 470 191C378 239 145 241 68 207Z" fill="#ffd34d"/>
+            <path d="M104 176C99 139 135 112 185 99C259 79 363 84 426 102C473 115 492 139 476 163C451 200 359 214 265 208C184 203 110 196 104 176Z" fill="#b82822"/>
+            <path d="M119 165C147 153 163 169 184 157C206 145 219 159 242 151C268 142 284 159 307 151C333 142 349 160 372 151C400 140 419 155 453 145" fill="none" stroke="#f7e8ba" stroke-width="12" stroke-linecap="round"/>
+            <path d="M138 193C174 179 197 196 224 184C252 172 276 192 306 181C340 168 362 186 401 172" fill="none" stroke="#e9a12b" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="181" cy="121" r="9" fill="#68a648"/><circle cx="231" cy="189" r="8" fill="#68a648"/><circle cx="349" cy="113" r="8" fill="#68a648"/><circle cx="415" cy="178" r="9" fill="#68a648"/>
+          </g>
+        </svg>
+        <div class="sticker" data-i18n="sticker">¡ARMALO<br>A TU GUSTO!</div>
+      </div>
+    </section>
+
+    <section class="demo-note" aria-label="Aviso de demostración">
+      <strong data-i18n="demoLabel">DEMO COMERCIAL</strong>
+      <span data-i18n="demoText">Los productos y precios son de muestra. Se reemplazan por el menú real antes de publicar.</span>
+    </section>
+
+    <section id="menu" class="menu-section">
+      <div class="section-head">
+        <div>
+          <p class="kicker" data-i18n="choose">ELEGÍ TU FAVORITO</p>
+          <h2 data-i18n="menuTitle">Menú</h2>
+        </div>
+        <p data-i18n="menuIntro">Sumá productos al pedido y enviá todo junto por WhatsApp.</p>
+      </div>
+
+      <div id="filters" class="filters" role="group" aria-label="Filtrar menú"></div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section class="how-section">
+      <div class="section-head compact">
+        <div>
+          <p class="kicker" data-i18n="easy">FÁCIL Y RÁPIDO</p>
+          <h2 data-i18n="howTitle">Tu pedido en 3 pasos</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <article><b>01</b><h3 data-i18n="step1Title">Elegí</h3><p data-i18n="step1Text">Agregá panchos, combos, papas y bebidas.</p></article>
+        <article><b>02</b><h3 data-i18n="step2Title">Revisá</h3><p data-i18n="step2Text">Confirmá cantidades, retiro y observaciones.</p></article>
+        <article><b>03</b><h3 data-i18n="step3Title">Mandalo</h3><p data-i18n="step3Text">WhatsApp se abre con el pedido completo listo para enviar.</p></article>
+      </div>
+    </section>
+
+    <section id="ubicacion" class="location-section">
+      <div class="location-card">
+        <p class="kicker" data-i18n="findUs">ENCONTRANOS</p>
+        <h2>Gdor. Gregores 830</h2>
+        <p>El Calafate · Santa Cruz · Argentina</p>
+        <div class="location-actions">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Gdor.+Gregores+830,+El+Calafate,+Santa+Cruz" target="_blank" rel="noreferrer" data-i18n="openMaps">Abrir en Maps</a>
+          <a class="btn btn-secondary light" href="https://www.instagram.com/lapancheria.fte/" target="_blank" rel="noreferrer">@lapancheria.fte</a>
+        </div>
+      </div>
+      <div class="map-art" aria-hidden="true">
+        <div class="map-grid"></div>
+        <div class="pin">🌭</div>
+        <span>LA PANCHERÍA</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand">
+      <img src="assets/logo.svg" alt="" />
+      <span><strong>LA PANCHERÍA</strong><small>EL CALAFATE</small></span>
+    </div>
+    <p data-i18n="footerText">Demo de tienda móvil · Menú + carrito + WhatsApp + ES/EN</p>
+    <a href="https://www.instagram.com/lapancheria.fte/" target="_blank" rel="noreferrer">Instagram ↗</a>
+  </footer>
+
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-head">
+      <div><p class="kicker" data-i18n="yourOrder">TU PEDIDO</p><h2 data-i18n="cartTitle">Carrito</h2></div>
+      <button id="closeCart" class="icon-btn" type="button" aria-label="Cerrar">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartEmpty" class="cart-empty">
+      <div>🌭</div>
+      <strong data-i18n="emptyTitle">Tu carrito está vacío</strong>
+      <span data-i18n="emptyText">Agregá algo rico del menú.</span>
+    </div>
+
+    <div class="order-form">
+      <div class="pickup-toggle">
+        <label><input type="radio" name="delivery" value="Retiro en local" checked> <span data-i18n="pickupShort">Retiro</span></label>
+        <label><input type="radio" name="delivery" value="Delivery"> <span>Delivery</span></label>
+      </div>
+      <label><span data-i18n="name">Nombre</span><input id="customerName" type="text" placeholder="Tu nombre"></label>
+      <label id="addressLabel" class="hidden"><span data-i18n="address">Dirección / alojamiento</span><input id="customerAddress" type="text" placeholder="Hotel, hostel o domicilio"></label>
+      <label><span data-i18n="notes">Observaciones</span><textarea id="customerNotes" rows="2" placeholder="Sin cebolla, salsa aparte..."></textarea></label>
+    </div>
+
+    <div class="cart-total"><span data-i18n="total">Total</span><strong id="cartTotal">$0</strong></div>
+    <button id="whatsappBtn" class="whatsapp-btn" type="button"><span>💬</span><span data-i18n="sendWhatsApp">Enviar pedido por WhatsApp</span></button>
+    <small class="demo-small" data-i18n="whatsappDemo">En esta demo, el número de WhatsApp queda pendiente de configurar.</small>
+  </aside>
+  <div id="overlay" class="overlay" hidden></div>
+
+  <dialog id="demoDialog" class="demo-dialog">
+    <button id="closeDialog" class="icon-btn dialog-close" type="button" aria-label="Cerrar">×</button>
+    <div class="dialog-icon">💬</div>
+    <h2 data-i18n="dialogTitle">Pedido listo</h2>
+    <p data-i18n="dialogText">En la versión final este botón abre WhatsApp con el pedido completo. Para la demo, podés copiar el mensaje:</p>
+    <textarea id="orderPreview" rows="12" readonly></textarea>
+    <button id="copyOrder" class="btn btn-primary full" type="button" data-i18n="copy">Copiar pedido</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
